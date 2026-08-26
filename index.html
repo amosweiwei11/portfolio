@@ -315,11 +315,19 @@
     color:var(--text-tertiary);
   }
 
-  .visual-gallery{
+  .diagram-panel{
     margin-top:20px;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
+    background:var(--bg-elevated);
+    border:1px solid var(--gold-dim);
+    padding:20px;
+  }
+  .diagram-panel svg{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .diagram-panel .visual-cap{
+    margin-top:14px;
   }
   .visual-gallery .visual-item{
     background:#f5f2ea;
@@ -718,6 +726,67 @@
       </div>
     </div>
     <div class="beat">
+      <div class="beat-label">AI WORKFLOW</div>
+      <div class="beat-text">
+        我建立了 <span class="highlight">AI-assisted Product Delivery Workflow</span>，將 AI 應用於 PRD、User Flow、Functional Specification、Acceptance Criteria 的產出，並延伸至<strong>鏈上例外情境與 UAT Case</strong> 的規劃——涵蓋 Wallet Signature 簽章失敗、Chain Mismatch 鏈別錯配、Gas 不足、Transaction Revert 交易回滾、Bridge Pending 跨鏈延遲等情境的規格檢查與測試設計，讓需求文件在邊界情境的覆蓋率與交付效率同步提升。<br><br>
+        這套流程的核心邏輯是「AI 負責產出速度、PM 負責判斷正確性」：需求拆解後，AI 協助草擬四項核心文件並窮舉鏈上例外情境、生成 UAT Case 草稿；每一版產出都經過我逐一審核修正商業邏輯、補充邊界情況，修正意見並回饋至草擬階段形成迭代迴圈——AI 加速產出，但規格正確性與最終定稿權始終保留在 PM 手上。文件草擬階段使用 ChatPRD、ChatGPT、Claude；情境窮舉與 UAT 生成則使用 Claude Code。
+
+        <div class="diagram-panel">
+          <svg width="100%" viewBox="0 0 680 634" role="img">
+            <title>AI-assisted Product Delivery Workflow 完整流程</title>
+            <desc>業務需求輸入後，AI 使用 ChatPRD、ChatGPT、Claude 拆解與草擬 PRD、User Flow、規格與驗收標準；接著使用 Claude Code 進行鏈上情境窮舉與 UAT Case 生成；交由 PM 審核修正，修正結果回饋至草擬階段形成迭代迴圈；最終產出規格檢查與測試規劃，涵蓋五類鏈上例外情境。</desc>
+            <defs>
+              <marker id="dpArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#8a7038" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+            </defs>
+
+            <rect x="240" y="40" width="200" height="44" rx="8" fill="#1f1d1a" stroke="rgba(233,185,78,0.25)" stroke-width="0.5"/>
+            <text x="340" y="62" text-anchor="middle" dominant-baseline="central" fill="#F2EDE3" font-size="14" font-family="'Noto Sans TC',sans-serif">業務需求輸入</text>
+            <line x1="340" y1="84" x2="340" y2="124" stroke="#8a7038" stroke-width="0.5" marker-end="url(#dpArrow)"/>
+
+            <rect x="180" y="124" width="320" height="82" rx="10" fill="#242220" stroke="#E9B94E" stroke-width="0.5"/>
+            <text x="340" y="142" text-anchor="middle" dominant-baseline="central" fill="#E9B94E" font-size="14" font-family="'Noto Sans TC',sans-serif">AI 拆解與草擬</text>
+            <text x="340" y="164" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">PRD ‧ User Flow ‧ 規格 ‧ AC</text>
+            <text x="340" y="186" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">工具：ChatPRD ‧ ChatGPT ‧ Claude</text>
+            <line x1="340" y1="206" x2="340" y2="246" stroke="#8a7038" stroke-width="0.5" marker-end="url(#dpArrow)"/>
+
+            <rect x="180" y="246" width="320" height="82" rx="10" fill="#242220" stroke="#E9B94E" stroke-width="0.5"/>
+            <text x="340" y="264" text-anchor="middle" dominant-baseline="central" fill="#E9B94E" font-size="14" font-family="'Noto Sans TC',sans-serif">AI 情境窮舉與生成</text>
+            <text x="340" y="286" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">鏈上例外情境 ‧ UAT Case</text>
+            <text x="340" y="308" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">工具：Claude Code</text>
+            <line x1="340" y1="328" x2="340" y2="368" stroke="#8a7038" stroke-width="0.5" marker-end="url(#dpArrow)"/>
+
+            <rect x="180" y="368" width="320" height="56" rx="10" fill="#242220" stroke="rgba(242,237,227,0.35)" stroke-width="0.5"/>
+            <text x="340" y="386" text-anchor="middle" dominant-baseline="central" fill="#F2EDE3" font-size="14" font-family="'Noto Sans TC',sans-serif">PM 審核與修正</text>
+            <text x="340" y="406" text-anchor="middle" dominant-baseline="central" fill="#a39a87" font-size="12" font-family="'JetBrains Mono',monospace">邏輯校正 ‧ 邊界補充</text>
+            <line x1="340" y1="424" x2="340" y2="464" stroke="#8a7038" stroke-width="0.5" marker-end="url(#dpArrow)"/>
+
+            <path d="M500,396 C 600,370 600,190 500,165" fill="none" stroke="#6f6858" stroke-width="0.5" stroke-dasharray="4 3" marker-end="url(#dpArrow)"/>
+            <text x="608" y="280" text-anchor="middle" fill="#6f6858" font-size="12" font-family="'JetBrains Mono',monospace">↻</text>
+            <text x="608" y="296" text-anchor="middle" fill="#6f6858" font-size="12" font-family="'JetBrains Mono',monospace">修正回饋</text>
+
+            <rect x="140" y="464" width="400" height="130" rx="14" fill="#1f1d1a" stroke="rgba(233,185,78,0.25)" stroke-width="0.5"/>
+            <text x="340" y="488" text-anchor="middle" dominant-baseline="central" fill="#F2EDE3" font-size="14" font-family="'Noto Sans TC',sans-serif">規格檢查與測試規劃</text>
+
+            <rect x="158" y="509" width="130" height="26" rx="13" fill="#181818" stroke="rgba(233,185,78,0.3)" stroke-width="0.5"/>
+            <text x="223" y="522" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">Wallet Signature</text>
+
+            <rect x="300" y="509" width="120" height="26" rx="13" fill="#181818" stroke="rgba(233,185,78,0.3)" stroke-width="0.5"/>
+            <text x="360" y="522" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">Chain Mismatch</text>
+
+            <rect x="432" y="509" width="90" height="26" rx="13" fill="#181818" stroke="rgba(233,185,78,0.3)" stroke-width="0.5"/>
+            <text x="477" y="522" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">Gas 不足</text>
+
+            <rect x="199" y="545" width="150" height="26" rx="13" fill="#181818" stroke="rgba(233,185,78,0.3)" stroke-width="0.5"/>
+            <text x="274" y="558" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">Transaction Revert</text>
+
+            <rect x="361" y="545" width="120" height="26" rx="13" fill="#181818" stroke="rgba(233,185,78,0.3)" stroke-width="0.5"/>
+            <text x="421" y="558" text-anchor="middle" dominant-baseline="central" fill="#cbb27a" font-size="12" font-family="'JetBrains Mono',monospace">Bridge Pending</text>
+          </svg>
+          <div class="visual-cap" style="color:#6f6858;">紫金框＝AI 執行階段（草擬／情境窮舉）；灰框＝PM 人工審核；虛線迴圈＝修正意見回饋至草擬階段的迭代機制</div>
+        </div>
+      </div>
+    </div>
+    <div class="beat">
       <div class="beat-label">VISUAL</div>
       <div class="beat-text">
         平台涵蓋 Staking、Unstaking、Reward Distribution、會員中心及 Web3 多錢包整合共 5 大模組，以下為部分規劃文件：
@@ -758,7 +827,7 @@
     <div class="role">獨立 Product Manager，數億筆用戶行為與交易數據</div>
 
     <div class="ledger">
-      <div class="field"><div class="k">Duration</div><div class="v">2025.11 – 2026.04</div></div>
+      <div class="field"><div class="k">Duration</div><div class="v">2025.11 – 至今</div></div>
       <div class="field"><div class="k">Scale</div><div class="v">數億筆交易數據</div></div>
       <div class="field"><div class="k">Role</div><div class="v">Solo PM</div></div>
       <div class="field"><div class="k">Users</div><div class="v">營運 / 財務 / 風控</div></div>
@@ -777,6 +846,13 @@
         欄位定義採「訪談優先、數據驗證」——逐一訪談紀錄現行邏輯，再用 raw data 試算比對；爭議欄位召集各單位負責人開會，無法統一則保留原邏輯、在應用層另行計算。<br><br>
         與各項工作負責人開會說明角色轉型，並實際教導原負責人員操作新系統，化解取代疑慮。<br><br>
         指標架構從訪談階段同步建構，初期設計一度過細導致維度碎片化，測試階段透過持續訪談收斂出真正高使用度的維度組合。
+      </div>
+    </div>
+    <div class="beat">
+      <div class="beat-label">AI WORKFLOW</div>
+      <div class="beat-text">
+        我規劃了 <span class="highlight">AI-assisted Data Workflow</span>，將 AI 應用於需求拆解、指標規則 Cross-check、SQL／資料邏輯驗證、UAT Case 生成與異常行為分析，大幅降低重複性分析與規格整理的成本。<br><br>
+        同時建立 <span class="highlight">AI-assisted Risk Investigation</span> 流程：由既有 Rule／SQL 先篩選異常帳號，再由 AI 彙整行為特徵、關聯資訊、歷史變化與可能異常原因，提供風控人員進一步判讀——<strong>人工審核與最終決策權完整保留</strong>，AI 僅加速資訊彙整，不取代判斷。
       </div>
     </div>
     <div class="beat">
